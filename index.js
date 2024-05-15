@@ -1,4 +1,3 @@
-
 const cheerio = require('cheerio')
 const amp = require('./lib/amp')
 const css = require('./lib/css')

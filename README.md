@@ -1,4 +1,3 @@
-
 # html2amp
 
 - [![CircleCI](https://circleci.com/gh/tomoyukikashiro/html2amp/tree/master.svg?style=svg)](https://circleci.com/gh/tomoyukikashiro/html2amp/tree/master)
@@ -44,14 +43,14 @@ console.log(amp) // amp string
 
 ## Options
 
-name | default value | note
------------- | ------------- | ------------- 
-cwd|`.`|image / styles base path
-gaConfigPath| |`amp-analytics` config json path for [google analytics](https://www.ampproject.org/docs/analytics/analytics-vendors)
-serviceWorker| |attributes of [amp-install-serviceworker](https://www.ampproject.org/docs/reference/components/amp-install-serviceworker) <br/> e.g. `src`, `data-iframe-src`
-optimize|false| if true, this module will optimize the html by using [@ampproject/toolbox-optimizer](https://github.com/ampproject/amp-toolbox/tree/master/packages/optimizer)
-cssPlugins | [] | you can add custom converter for css.
-htmlPlugins | [] | you can add custom converter for css.
+| name          | default value | note                                                                                                                                                           |
+| ------------- | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| cwd           | `.`           | image / styles base path                                                                                                                                       |
+| gaConfigPath  |               | `amp-analytics` config json path for [google analytics](https://www.ampproject.org/docs/analytics/analytics-vendors)                                           |
+| serviceWorker |               | attributes of [amp-install-serviceworker](https://www.ampproject.org/docs/reference/components/amp-install-serviceworker) <br/> e.g. `src`, `data-iframe-src`  |
+| optimize      | false         | if true, this module will optimize the html by using [@ampproject/toolbox-optimizer](https://github.com/ampproject/amp-toolbox/tree/master/packages/optimizer) |
+| cssPlugins    | []            | you can add custom converter for css.                                                                                                                          |
+| htmlPlugins   | []            | you can add custom converter for css.                                                                                                                          |
 
 ### CSS Plugin
 
@@ -73,7 +72,7 @@ const plugin = (elementString, cssText, options) => {
 
 // options
 const options = {
-  cssPlugins: [ plugin ]
+  cssPlugins: [plugin],
 }
 ```
 
@@ -94,7 +93,7 @@ const plugin = (htmlString, options) => {
 
 // options
 const options = {
-  htmlPlugins: [ plugin ]
+  htmlPlugins: [plugin],
 }
 ```
 
@@ -107,7 +106,7 @@ This library ...
 - add `viewport` meta if it does not exist
   - viewport should be `<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">`
 - replace all external css files with one `<style amp-custom>/* css is here */<style/>`
-    - also removed `!imporant` keyword
+  - also removed `!imporant` keyword
 - remove all scripts
 - add [AMP CSS boilerplate](https://www.ampproject.org/docs/fundamentals/converting/resolving-errors#include-amp-css-boilerplate)
 - replace `<img />`, `<picture><source /></picture>` with `<amp-img />`
@@ -117,9 +116,9 @@ This library ...
 - add `<amp-analytics />`
   - only support google analytics
   - also removed regular google analytics tag
-  - it's optional 
+  - it's optional
 - add [amp-install-serviceworker](https://www.ampproject.org/docs/reference/components/amp-install-serviceworker)
-  - it's optional 
+  - it's optional
 - replace all a tag links which destination is original site with absolute url which starts with http[s]
   - original url comes from canonical's href attribute
   - e.g. `<a href="/test">` is replaced with `<a href="https//original-url.com/test">`

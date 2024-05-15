@@ -12,10 +12,15 @@ describe('script', function () {
     })
   })
   describe('There is ld json script tag', function () {
-    const html = htmlFactory({ head: '<script type="application/ld+json">{"test":"test"}</script>' })
+    const html = htmlFactory({
+      head: '<script type="application/ld+json">{"test":"test"}</script>',
+    })
     it('should not be removed', function () {
       const $ = script(cheerio.load(html))
-      assert($, htmlFactory({ head: '<script type="application/ld+json">{"test":"test"}</script>' }))
+      assert(
+        $,
+        htmlFactory({ head: '<script type="application/ld+json">{"test":"test"}</script>' })
+      )
     })
   })
 })

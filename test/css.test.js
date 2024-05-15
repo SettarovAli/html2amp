@@ -12,14 +12,18 @@ const assertCss = ($) => {
 describe('css', function () {
   describe('There is remote stylesheet', function () {
     describe('the url is http', function () {
-      const html = htmlFactory({ head: '<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">' })
+      const html = htmlFactory({
+        head: '<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">',
+      })
       it('should be appended in custom style tag', async function () {
         const $ = await css(cheerio.load(html))
         assertCss($)
       })
     })
     describe('the url starts with //', function () {
-      const html = htmlFactory({ head: '<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">' })
+      const html = htmlFactory({
+        head: '<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">',
+      })
       it('should be appended in custom style tag', async function () {
         const $ = await css(cheerio.load(html))
         assertCss($)
@@ -43,7 +47,9 @@ describe('css', function () {
     })
   })
   describe('There is inline style', function () {
-    const html = htmlFactory({ head: '<style>.test1{color: #000 !important;}</style><style>.test2{color: #ccc !important;}</style>' })
+    const html = htmlFactory({
+      head: '<style>.test1{color: #000 !important;}</style><style>.test2{color: #ccc !important;}</style>',
+    })
     it('should be appended in custom style tag', async function () {
       const $ = await css(cheerio.load(html))
       assertCss($)
@@ -58,7 +64,7 @@ describe('css', function () {
       }
       const options = {
         cwd: path.join(process.cwd(), 'test/fixtures'),
-        cssPlugins: [plugin]
+        cssPlugins: [plugin],
       }
       const $ = await css(cheerio.load(html), options)
       expect($('style[amp-custom]').eq(0).html()).toEqual('.test{color:#ccc}')

@@ -49,8 +49,8 @@ describe('index', function () {
     serviceWorker: {
       src: 'https://example.com/sw.js',
       'data-iframe-src': 'https://example.com/install-serviceworker.html',
-      layout: 'nodisplay'
-    }
+      layout: 'nodisplay',
+    },
   }
   it('should be generate AMP ⚡.', async function () {
     const amp = await html2amp(html, config)
