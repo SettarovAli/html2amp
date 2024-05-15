@@ -18,7 +18,7 @@ const html = require('./lib/html')
 const html2amp = async (htmlString, options = {}) => {
   let $ = cheerio.load(htmlString)
   $ = amp($, options)
-  $ = await css($, options)
+  $ = await css($, options, htmlString)
   $ = await picture($, options) // should be done before img
   $ = await img($, options)
   $ = script($, options)
