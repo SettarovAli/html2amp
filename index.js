@@ -28,7 +28,7 @@ const html2amp = async (htmlString, options = {}) => {
   $ = ga($, options)
   $ = iframe($, options)
   $ = canonical($)
-  $ = links($)
+  $ = links($, options)
   $ = preload($)
   $ = serviceworker($, options)
   $ = boilerplate($, options)
