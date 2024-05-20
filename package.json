@@ -1,6 +1,6 @@
 {
   "name": "html2amp-vulcan",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Simple converter from HTML into AMP(Accelerated Mobile Pages)",
   "main": "index.js",
   "scripts": {

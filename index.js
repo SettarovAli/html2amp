@@ -15,6 +15,7 @@ const links = require('./lib/links')
 const preload = require('./lib/link/preload')
 const toolbox = require('./lib/toolbox')
 const html = require('./lib/html')
+const actions = require('./lib/actions')
 
 const html2amp = async (htmlString, options = {}) => {
   let $ = cheerio.load(htmlString)
@@ -32,6 +33,7 @@ const html2amp = async (htmlString, options = {}) => {
   $ = preload($)
   $ = serviceworker($, options)
   $ = boilerplate($, options)
+  $ = actions($)
   htmlString = html($, options)
   htmlString = await toolbox.optimizer(htmlString, options)
   return htmlString
